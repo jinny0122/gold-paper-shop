@@ -67,7 +67,9 @@ export default function HomePage() {
           精制作大黄梨 · 祈福迎祥
         </h2>
         <p className="text-amber-100 max-w-xl mx-auto text-xs sm:text-sm md:text-base leading-relaxed">
-          纯手工折制，规格多样，专人送货与自取。\n先选购款式，提交后将直接通过 WhatsApp 与专人确认细节。
+          纯手工折制，规格多样，专人送货与自取。
+          <br />
+          先选购款式，提交后将直接通过 WhatsApp 与专人确认细节。
         </p>
       </section>
 
