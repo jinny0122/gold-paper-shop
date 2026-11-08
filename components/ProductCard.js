@@ -23,7 +23,7 @@ export default function ProductCard({ product }) {
         {/* 商品图片 */}
         <div className="relative w-full h-64 bg-amber-50">
           <img
-            src={product.image_url || 'https://via.placeholder.com/400x400?text=金纸大黄梨'}
+            src={product.image_url || 'https://via.placeholder.com/400x400?text=手工金纸'}
             alt={product.title}
             className="w-full h-full object-cover"
           />
@@ -49,7 +49,7 @@ export default function ProductCard({ product }) {
                   const found = sizes.find((s) => s.name === e.target.value);
                   if (found) setSelectedSize(found);
                 }}
-                className="w-full p-2.5 bg-amber-50/50 border border-amber-200 rounded-lg text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full p-2.5 bg-amber-50/50 border border-amber-200 rounded-lg text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
               >
                 {sizes.map((size, index) => (
                   <option key={index} value={size.name}>
