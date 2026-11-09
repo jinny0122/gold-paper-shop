@@ -53,8 +53,8 @@ export default function ProductCard({ product }) {
             <h3 className="text-xl font-bold text-gray-800 mb-2">{product.title}</h3>
             <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
 
-            {/* 尺寸选择框 */}
-            {sizes.length > 0 && (
+            {/* 尺寸/规格选择逻辑：规格大于1个时显示下拉菜单，只有1个时显示静态清爽标签 */}
+            {sizes.length > 1 ? (
               <div className="mb-4">
                 <label className="block text-xs font-semibold text-gray-500 mb-1">选择尺寸规格：</label>
                 <select
@@ -72,7 +72,14 @@ export default function ProductCard({ product }) {
                   ))}
                 </select>
               </div>
-            )}
+            ) : sizes.length === 1 ? (
+              <div className="mb-4 text-xs font-semibold text-gray-500 flex items-center gap-2">
+                <span>规格：</span>
+                <span className="text-amber-900 font-bold bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
+                  {selectedSize.name}
+                </span>
+              </div>
+            ) : null}
           </div>
         </div>
 
