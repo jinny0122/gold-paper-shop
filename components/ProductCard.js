@@ -48,14 +48,13 @@ export default function ProductCard({ product }) {
             )}
           </div>
 
-          {/* 商品内容区（优化间距） */}
-          <div className="p-4 sm:p-5">
-            <h3 className="text-lg font-bold text-gray-800 mb-1.5">{product.title}</h3>
-            <p className="text-gray-600 text-xs sm:text-sm mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
+          {/* 商品内容区（已移除中间的 description 叙述，卡片变得更短、更紧凑） */}
+          <div className="p-4 sm:p-5 pb-2">
+            <h3 className="text-lg font-bold text-gray-800 mb-3">{product.title}</h3>
 
             {/* 尺寸/规格选择逻辑：规格大于1个时显示下拉菜单，只有1个时显示精简标签 */}
             {sizes.length > 1 ? (
-              <div className="mb-2">
+              <div className="mb-3">
                 <label className="block text-xs font-semibold text-gray-500 mb-1">选择尺寸规格：</label>
                 <select
                   value={selectedSize.name}
@@ -73,7 +72,7 @@ export default function ProductCard({ product }) {
                 </select>
               </div>
             ) : sizes.length === 1 ? (
-              <div className="flex items-center justify-between bg-amber-50/60 px-3 py-2 rounded-lg border border-amber-200/60 mb-2">
+              <div className="flex items-center justify-between bg-amber-50/60 px-3 py-2 rounded-lg border border-amber-200/60 mb-3">
                 <span className="text-xs text-gray-500 font-medium">规格</span>
                 <span className="text-xs text-amber-900 font-bold">
                   {selectedSize.name}
