@@ -25,7 +25,7 @@ export default function ProductCard({ product }) {
           {/* 商品图片区：点击查看大框 */}
           <div 
             onClick={() => setShowImageModal(true)}
-            className="relative w-full h-80 bg-amber-50/50 cursor-pointer group overflow-hidden flex items-center justify-center p-2"
+            className="relative w-full h-72 bg-amber-50/50 cursor-pointer group overflow-hidden flex items-center justify-center p-2"
           >
             <img
               src={product.image_url || 'https://via.placeholder.com/400x400?text=手工金纸'}
@@ -48,14 +48,14 @@ export default function ProductCard({ product }) {
             )}
           </div>
 
-          {/* 商品内容 */}
-          <div className="p-5">
-            <h3 className="text-xl font-bold text-gray-800 mb-2">{product.title}</h3>
-            <p className="text-gray-600 text-sm mb-4 line-clamp-2">{product.description}</p>
+          {/* 商品内容区（优化间距） */}
+          <div className="p-4 sm:p-5">
+            <h3 className="text-lg font-bold text-gray-800 mb-1.5">{product.title}</h3>
+            <p className="text-gray-600 text-xs sm:text-sm mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
 
-            {/* 尺寸/规格选择逻辑：规格大于1个时显示下拉菜单，只有1个时显示静态清爽标签 */}
+            {/* 尺寸/规格选择逻辑：规格大于1个时显示下拉菜单，只有1个时显示精简标签 */}
             {sizes.length > 1 ? (
-              <div className="mb-4">
+              <div className="mb-2">
                 <label className="block text-xs font-semibold text-gray-500 mb-1">选择尺寸规格：</label>
                 <select
                   value={selectedSize.name}
@@ -63,7 +63,7 @@ export default function ProductCard({ product }) {
                     const found = sizes.find((s) => s.name === e.target.value);
                     if (found) setSelectedSize(found);
                   }}
-                  className="w-full p-2.5 bg-amber-50/50 border border-amber-200 rounded-lg text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
+                  className="w-full p-2 bg-amber-50/50 border border-amber-200 rounded-lg text-sm font-medium text-gray-800 focus:outline-none focus:ring-2 focus:ring-red-500 cursor-pointer"
                 >
                   {sizes.map((size, index) => (
                     <option key={index} value={size.name}>
@@ -73,9 +73,9 @@ export default function ProductCard({ product }) {
                 </select>
               </div>
             ) : sizes.length === 1 ? (
-              <div className="mb-4 text-xs font-semibold text-gray-500 flex items-center gap-2">
-                <span>规格：</span>
-                <span className="text-amber-900 font-bold bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">
+              <div className="flex items-center justify-between bg-amber-50/60 px-3 py-2 rounded-lg border border-amber-200/60 mb-2">
+                <span className="text-xs text-gray-500 font-medium">规格</span>
+                <span className="text-xs text-amber-900 font-bold">
                   {selectedSize.name}
                 </span>
               </div>
@@ -84,17 +84,17 @@ export default function ProductCard({ product }) {
         </div>
 
         {/* 底部价格与动作按钮 */}
-        <div className="p-5 pt-0">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-xs text-gray-500">当前规格价格</span>
+        <div className="p-4 sm:p-5 pt-0">
+          <div className="flex items-center justify-between mb-3 pt-2 border-t border-gray-100">
+            <span className="text-xs text-gray-500 font-medium">价格</span>
             <span className="text-2xl font-black text-red-600">
-              <span className="text-sm font-normal">RM</span> {selectedSize.price}
+              <span className="text-xs font-normal">RM</span> {selectedSize.price}
             </span>
           </div>
 
           <button
             onClick={handleAddToCart}
-            className={`w-full py-3 rounded-xl font-bold transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 ${
+            className={`w-full py-3 rounded-xl font-bold transition-all shadow-md active:scale-95 flex items-center justify-center gap-2 text-sm ${
               added
                 ? 'bg-green-600 text-white'
                 : 'bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-700 hover:to-amber-700 text-white'
